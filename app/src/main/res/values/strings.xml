@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ca1_SlotMachine</string>
+    <string name="spin">Spin</string>
+    <string name="plays"># Plays</string>
+    <string name="total_plays">Total Plays</string>
+    <string name="total_wins">Total Wins</string>
+    <string name="win_play_ratio">Win/Play Ratio</string>
+    <string name="result_message">Result Message</string>
+    <string name="last_win">Last win</string>
+</resources>
