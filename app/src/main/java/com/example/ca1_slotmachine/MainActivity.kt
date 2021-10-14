@@ -86,10 +86,12 @@ class MainActivity : AppCompatActivity()
         slotImage2.setImageResource(drawableResourceSlotTwo)
         slotImage3.setImageResource(drawableResourceSlotThree)
 
-        val resultMessage : TextView = findViewById(R.id.resultMessage)
+        //find image for spin result
+        val resultImage: ImageView = findViewById(R.id.imageOfResult)
         if(slotOneSpin == slotTwoSpin && slotTreeSpin == slotOneSpin)
         {
-            resultMessage.text = "Well done You Won"
+            //updating image of result
+            resultImage.setImageResource(R.drawable.winner)
 
             //updating win stats
             totalWins += 1
@@ -98,7 +100,7 @@ class MainActivity : AppCompatActivity()
             playsSinceLastWin = 0
             playsSinceLastWinText.text = playsSinceLastWin.toString()
         }else{
-            resultMessage.text = "No Luck Try Again"
+            resultImage.setImageResource(R.drawable.unlucky)
         }
         //win/PlayRatio stats
         //https://code.luasoftware.com/tutorials/kotlin/kotlin-round-double-to-2-decimal-point/ -- helped (ref)
