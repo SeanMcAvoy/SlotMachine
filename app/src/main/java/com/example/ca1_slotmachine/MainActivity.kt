@@ -65,30 +65,10 @@ class MainActivity : AppCompatActivity()
         val slotImage3: ImageView = findViewById(R.id.imageView3)
 
         //TODO timeout for the spinning images - youtube
-        //TODO make function void to set images - so pass in the number and set that image
-        val drawableResourceSlotOne = when (slotOneSpin){
-            1 -> R.drawable.grapes1
-            2 -> R.drawable.lemon1
-            3 -> R.drawable.watermellon1
-            else -> R.drawable.number7e
-        }
-        val drawableResourceSlotTwo = when (slotTwoSpin){
-            1 -> R.drawable.grapes1
-            2 -> R.drawable.lemon1
-            3 -> R.drawable.watermellon1
-            else -> R.drawable.number7e
-        }
-        val drawableResourceSlotThree = when (slotThreeSpin){
-            1 -> R.drawable.grapes1
-            2 -> R.drawable.lemon1
-            3 -> R.drawable.watermellon1
-            else -> R.drawable.number7e
-        }
-
-        //updating the images
-        slotImage1.setImageResource(drawableResourceSlotOne)
-        slotImage2.setImageResource(drawableResourceSlotTwo)
-        slotImage3.setImageResource(drawableResourceSlotThree)
+        //Changing the Images
+        selectImage(slotOneSpin,slotImage1)
+        selectImage(slotTwoSpin,slotImage2)
+        selectImage(slotThreeSpin,slotImage3)
 
         //find image for spin result
         val resultImage: ImageView = findViewById(R.id.imageOfResult)
@@ -112,6 +92,16 @@ class MainActivity : AppCompatActivity()
         var roundedWinPlayRatio = "%.3f".format(winPlayRatio).toDouble()
         val winPlayRatioText: TextView = findViewById(R.id.winPlayRatioResult)
         winPlayRatioText.text = roundedWinPlayRatio.toString()
+    }
+    private fun selectImage(randNum: Int,slotImage: ImageView)
+    {
+        val drawableResource = when (randNum){
+            1 -> R.drawable.grapes1
+            2 -> R.drawable.lemon1
+            3 -> R.drawable.watermellon1
+            else -> R.drawable.number7e
+        }
+        slotImage.setImageResource(drawableResource)
     }
 }
 
