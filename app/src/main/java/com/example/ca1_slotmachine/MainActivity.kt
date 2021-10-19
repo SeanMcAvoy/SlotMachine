@@ -3,21 +3,23 @@ package com.example.ca1_slotmachine
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity()
 {
-
     //setting up stats
     private var playsSinceLastWin = 0
     private var totalPlays = 0
     private var totalWins = 0
     private var winPlayRatio = 0.0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
+        Log.d("Message","onCreate() - Called")
         setContentView(R.layout.activity_main)
 
         // Find the Button in the layout
@@ -38,7 +40,6 @@ class MainActivity : AppCompatActivity()
     @SuppressLint("SetTextI18n")
     private fun playSlots()
     {
-
         //updating plays since last win
         playsSinceLastWin += 1
         val playsSinceLastWinText: TextView = findViewById(R.id.numPlaysSinceLastWinTextResult)
@@ -53,7 +54,10 @@ class MainActivity : AppCompatActivity()
         val slot = Slot()
         val slotOneSpin = slot.spin()
         val slotTwoSpin = slot.spin()
-        val slotTreeSpin = slot.spin()
+        val slotThreeSpin = slot.spin()
+        Log.d("Random Number1", "Number Generated was: $slotOneSpin")
+        Log.d("Random Number2", "Number Generated was: $slotTwoSpin")
+        Log.d("Random Number3", "Number Generated was: $slotThreeSpin")
 
         //finding the 3 Image views
         val slotImage1: ImageView = findViewById(R.id.ImageView)
@@ -74,7 +78,7 @@ class MainActivity : AppCompatActivity()
             3 -> R.drawable.watermellon1
             else -> R.drawable.number7e
         }
-        val drawableResourceSlotThree = when (slotTreeSpin){
+        val drawableResourceSlotThree = when (slotThreeSpin){
             1 -> R.drawable.grapes1
             2 -> R.drawable.lemon1
             3 -> R.drawable.watermellon1
@@ -88,7 +92,7 @@ class MainActivity : AppCompatActivity()
 
         //find image for spin result
         val resultImage: ImageView = findViewById(R.id.imageOfResult)
-        if(slotOneSpin == slotTwoSpin && slotTreeSpin == slotOneSpin)
+        if(slotOneSpin == slotTwoSpin && slotThreeSpin == slotOneSpin)
         {
             //updating image of result
             resultImage.setImageResource(R.drawable.winner)
@@ -103,7 +107,7 @@ class MainActivity : AppCompatActivity()
             resultImage.setImageResource(R.drawable.unlucky)
         }
         //win/PlayRatio stats
-        //https://code.luasoftware.com/tutorials/kotlin/kotlin-round-double-to-2-decimal-point/ -- helped (ref)
+        //https://code.luasoftware.com/tutorials/kotlin/kotlin-round-double-to-2-decimal-point/ -- helped (referenced)
         winPlayRatio = totalWins / totalPlays.toDouble()
         var roundedWinPlayRatio = "%.3f".format(winPlayRatio).toDouble()
         val winPlayRatioText: TextView = findViewById(R.id.winPlayRatioResult)
